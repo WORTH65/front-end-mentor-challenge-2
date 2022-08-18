@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <!-- CSS File -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Links -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <div class="full-wrapper">
+    <div class="left-images">
+      <div class="card-front">
+        <img src="images/card-logo.svg" alt="logo" >
+        <div class="front-text">
+          <p id="card-number">0000 0000 0000 0000</p>
+          <div class="front-bottom-text">
+            <p id="card-name">Jane Appleseed</p>
+            <p id="card-date"><span id="card-month">00</span>/<span id="card-year">00</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="card-back">
+        <p id="cvv">000</p>
+      </div>
+    </div>
+    <div class="right-form">
+      <div class="vertical-align-helper">
+
+        <!-- Actual Form -->
+        <form action="/" method="POST" enctype="multipart/form-data" id="main-form">
+
+          <div class="form-outline">
+            <label class="form-label" for="cardholderName">CARDHOLDER NAME</label>
+            <input type="text" onkeyup="fillCards(event)" onclick="activeStyle(event)" id="cardholderName" maxlength="30" name="cardholderName" class="form-control" placeholder="e.g. Jane Appleseed" required/>
+            <p class="error-message">Can't Be Blank</p>
+          </div><br>
+          <div class="form-outline">
+            <label class="form-label" for="cardNumber">CARD NUMBER</label>
+            <input type="text" onkeyup="fillCards(event)" onclick="activeStyle(event)" id="cardNumber" name="cardNumber" class="form-control" placeholder="e.g. 1234 5678 9000 0000" required/>
+            <p class="error-message">Can't Be Blank</p>
+          </div><br>
+          <div id="d-flex" class="form-outline">
+            <div class="special-outline">
+              <label class="form-label" for="dateMon">Exp. Date (MM/YY)</label><br>
+              <input type="text" onkeyup="fillCards(event)" onclick="activeStyle(event)" id="dateMon" maxlength="2" name="dateMon" class="form-control" placeholder="MM" required/>
+              <input type="text" onkeyup="fillCards(event)" onclick="activeStyle(event)" id="dateYear" maxlength="2" name="dateYear" class="form-control" placeholder="YY" required/><br>
+              <p class="error-message">Can't Be Blank</p>
+            </div>
+            <div class="special-outline">
+              <label class="form-label" for="cvc">CVC</label>
+              <input type="text" onkeyup="fillCards(event)" onclick="activeStyle(event)" id="cvc" maxlength="3" name="cvc" class="form-control" placeholder="e.g. 453" required/>
+              <p class="error-message">Can't Be Blank</p>
+            </div>
+          </div>
+          <div class="form-outline">
+            <input type="submit" onclick="submitForm(event)" id="submit-form" name="submit-form" value="Confirm" required/>
+          </div>
+
+        </form>
+
+        <!-- If Form Submitted say so -->
+        <div id="form-success">
+          <img src="images/icon-complete.svg" alt="correct"><br>
+          <h2>Thank You!</h2>
+          <p>We have added your Card Details</p>
+          <button>Continue</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Completed state start -->
+
+  Thank you!
+  We've added your card details
+  Continue
+
+  <!-- Adding the InputMask -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="jquery.inputmask.js"></script>
+
+  <script>
+
+    // Handle the card-number input spacing
+    $("#cardNumber").inputmask("9999 9999 9999 9999");
+
+    // Filling the Cards on the left based on the values from the form
+    function fillCards(event) {
+      let current = event.target;
+      if (current.id == 'cardholderName') {
+        if (current.value == '') {
+          document.getElementById('card-name').innerHTML = 'Jane Appleseed';
+        } else {
+          document.getElementById('card-name').innerHTML = current.value;
+        }
+      } else if (current.id == 'cardNumber') {
+        if (current.value == '') {
+          document.getElementById('card-number').innerHTML = '0000 0000 0000 0000';
+        } else {
+          document.getElementById('card-number').innerHTML = current.value;
+        }
+      } else if (current.id == 'dateMon') {
+        if (current.value == '') {
+          document.getElementById('card-month').innerHTML = '00';
+        } else {
+          document.getElementById('card-month').innerHTML = current.value;
+        }
+      } else if (current.id == 'dateYear') {
+        if (current.value == '') {
+          document.getElementById('card-year').innerHTML = '00';
+        } else {
+          document.getElementById('card-year').innerHTML = current.value;
+        }
+      } else if (current.id == 'cvc') {
+        if (current.value == '') {
+          document.getElementById('cvv').innerHTML = '000';
+        } else {
+          document.getElementById('cvv').innerHTML = current.value;
+        }
+      } 
+    }
+
+    // Styling input type="text"clicks
+    function activeStyle(e) {
+      let current = e.target;
+      // Checking if the input is already in error state
+      if (current.id == 'dateMon') {
+        if (current.nextElementSibling.nextElementSibling.nextElementSibling.style.display == 'block') {
+          current.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'none';
+        } 
+      } else if (current.id == 'dateYear') {
+          if (current.nextElementSibling.nextElementSibling.style.display == 'block') {
+            current.nextElementSibling.nextElementSibling.style.display = 'none';
+          }
+      } else {
+          current.nextElementSibling.style.display = 'none';
+      }
+      current.style.border = '1px solid var(--dark-violet)';
+      current.addEventListener('blur', () => {
+        current.style.border = '1px solid var(--light-violet)';
+      })
+    }
+
+    // Check if form was filled correctly and submit if correct
+    function submitForm(submitEvent) {
+      submitEvent.preventDefault();
+      let fields = document.querySelectorAll('input[type="text"]');
+      let flag = 1; 
+      fields.forEach( (ele) => {
+        if (ele.value == '') {
+          flag = 0;
+          ele.style.border = '1px solid var(--error)';
+          if (ele.id === 'dateMon') {
+            if (!(ele.nextElementSibling.nextElementSibling.nextElementSibling.style.display == 'block')) {
+              ele.nextElementSibling.nextElementSibling.nextElementSibling.style.display = 'block';
+            }
+          } else if (ele.id === 'dateYear') {
+            flag = 0;
+            if (!(ele.nextElementSibling.nextElementSibling.style.display == 'block')) {
+              ele.nextElementSibling.nextElementSibling.style.display = 'block';
+            }
+          } else {
+            flag = 0;
+            ele.nextElementSibling.style.display = 'block';
+          }
+        } else { 
+          ele.style.border = '1px solid green';
+        }
+      })
+
+      // Submitting if correct
+      if (flag == 1) {
+        document.getElementById('main-form').style.display = 'none';
+        document.getElementById('form-success').style.display = 'inline-block';
+      }
+    }
+  </script>
+</body>
+</html>

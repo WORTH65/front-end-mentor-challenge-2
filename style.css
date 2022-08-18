@@ -1,0 +1,222 @@
+/* Full Page Setup */
+:root {
+    --white: hsl(0, 0%, 100%);
+    --light-violet: hsl(270, 3%, 87%);
+    --violet: hsl(279, 6%, 55%);
+    --dark-violet: hsl(278, 68%, 11%);
+    --error: hsl(0, 100%, 66%);
+    --gradient-start: hsl(249, 99%, 64%);
+    --gradient-end: hsl(278, 94%, 30%);
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: var(--white);
+    font-weight: 500;
+    font-size: 18px;
+}
+a {
+    text-decoration: none;
+}
+#d-flex {
+    display: flex;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+    width: 0.5em;
+}
+::-webkit-scrollbar-track {
+    background-color: var(--light-violet);
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--violet);
+    border-radius: 100px;
+}
+/* Placeholder Colors */
+::placeholder {
+    color: var(--light-violet);
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--light-violet);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--light-violet);
+}
+
+/* Container for all the content */
+.full-wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+/* form setup */
+form {
+    display: inline-block;
+}
+.form-outline {
+    display: inline-block;
+    margin: 0.1rem auto;
+    position: relative; 
+    left: 30rem;
+    top: 0%;
+}
+.form-outline p {
+    font-size: 0.5rem;
+    color: var(--error);
+    display: none;
+    transition: 0.3s;
+}
+.form-label {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: var(--dark-violet);
+}
+.form-control {
+    display: block;
+    outline: none;
+    padding: 0.4rem 0.7rem;
+    width: 13.2rem;
+    margin-top: 0.1rem;
+    border-radius: 6px;
+    color: var(--dark-violet);
+    border: 1px solid var(--light-violet);
+}
+.form-control:hover {
+    border: 1px solid var(--violet);
+}
+#dateMon, #dateYear {
+    width: 2.4rem;
+    margin-right: 0.2rem;
+    display: inline-block;
+}
+#dateYear {
+    margin-right: 1rem;
+}
+#cvc {
+    width: 4rem;
+}
+#submit-form {
+    border: 1px solid transparent;
+    width: 14.8rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    padding: 0.4rem 0.7rem;
+    color: var(--white);
+    background-color: var(--dark-violet);
+    transition: 0.2s;
+}
+#submit-form:hover {
+    border: 1px solid var(--dark-violet);
+    color: var(--dark-violet);
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+/* Left Side Decorations */
+.left-images {
+    width: 24%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('images/bg-main-desktop.png');
+    background-size: cover;
+    color: white;
+}
+
+.card-front, .card-back {
+    display: flex;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 245px;
+    width: 447px;
+}
+.card-front {
+    background-image: url(images/bg-card-front.png);
+    margin-left: 35%;
+    margin-bottom: 3%;
+}
+.card-back {
+    background-image: url(images/bg-card-back.png);
+    margin-left: 55%;
+    margin-top: 3%;
+}
+
+.card-front img {
+    height: 2rem;
+    width: 3.6rem;
+}
+.card-front p {
+    margin: 0;
+}
+.front-text, .card-front img {
+    padding: 6%;
+}
+.front-bottom-text {
+    display: flex;
+    justify-content: space-between;
+} 
+#card-number {
+    font-size: 32px;
+    margin-bottom: 5%;
+}
+
+#cvv {
+    margin: 24.3% 0 0 80%;
+}
+
+/* Right Side Form Layout */
+.right-form {
+    width: 76%;
+    height: 100%;
+    display: table;
+}
+.vertical-align-helper {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+/* Handling form success */
+#form-success {
+    display: none;
+    text-align: center;
+    position: relative; 
+    left: 30rem;
+    top: 0%;
+}
+#form-success h2 {
+    font-weight: 500;
+}
+#form-success p {
+    color: var(--violet);
+}
+#form-success button {
+    border: 1px solid transparent;
+    width: 14.8rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    padding: 0.4rem 0.7rem;
+    color: var(--white);
+    background-color: var(--dark-violet);
+    transition: 0.2s;
+}
+#form-success button:hover {
+    border: 1px solid var(--dark-violet);
+    color: var(--dark-violet);
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.5s;
+}
