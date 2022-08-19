@@ -289,6 +289,10 @@ form {
     .form-outline {
         position: static;
     }
+
+    #form-success {
+        position: static;
+    }
 }
 
 @media only screen and (max-width: 555px) {
